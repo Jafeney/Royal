@@ -1,0 +1,22 @@
+{
+  "name": "royal",
+  "version": "1.0.0",
+  "description": "a Royal React Component library ",
+  "main": "app.js",
+  "scripts": {
+    "test": "webpack --progress -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jafeney/Royal.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Jafeney",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jafeney/Royal/issues"
+  },
+  "homepage": "https://github.com/Jafeney/Royal#readme"
+}
