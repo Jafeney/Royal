@@ -1,3 +1,9 @@
+/**
+ * @desc 路由配置
+ * @author Jafeney
+ * @dateTime 2016-07-05
+ **/
+
 import React from 'react'
 import { Route } from 'react-router'
 
