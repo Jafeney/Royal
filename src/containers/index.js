@@ -5,6 +5,7 @@
  **/
 
 import React, { Component } from 'react'
+import Icon from '../components/Basic/Icon/'
 import './style.less'
 
 class Demo extends Component {
@@ -17,7 +18,7 @@ class Demo extends Component {
         return (
             <div>
                 <div className="sidebar">
-                    <h1>Royal</h1>
+                    <h1><Icon type={"circle-blank"} /> Royal</h1>
                     <ul className="sidebar-list">
                         <li>
                             <h2>Basic</h2>
