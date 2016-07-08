@@ -33,7 +33,7 @@ class Button extends Component {
             <span style={ this.wrapStyle } className={ this.wrapClass } >
                 <i
                     style={{ fontSize: this.font, color: this.color, backgroundColor: this.bgColor, ...this.style }}
-                    className={ _className.join(' ') + ' ' + (this.className && this.className) }>
+                    className={ _className.join(' ') + ' ' + (this.className ? this.className : '') }>
                 </i>
                 { this.text ? <label className={ this.textClass } style={{ cursor:'pointer', fontSize: this.font, color: this.color, ...this.textStyle }}> { this.text } </label> : null }
             </span>

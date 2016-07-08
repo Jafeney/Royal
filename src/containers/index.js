@@ -13,7 +13,7 @@ class Demo extends Component {
     }
 
     render() {
-        let { children, request, actions } = this.props
+        let { children } = this.props
         return (
             <div>
                 <div className="sidebar">
@@ -29,8 +29,9 @@ class Demo extends Component {
                         <li>
                             <h2>Form</h2>
                             <ul>
-                                <li><a href="#/Input">Input</a></li>
                                 <li><a href="#/button">Button</a></li>
+                                <li><a href="#/checkbox">Checkbox</a></li>
+                                <li><a href="#/radio">Radio</a></li>
                             </ul>
                         </li>
                     </ul>

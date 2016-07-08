@@ -59,7 +59,7 @@ source.forEach((item) => {
             fs.appendFileSync( _jsFile, "import React, { Component } from 'react' " + '\n' )
             fs.appendFileSync( _jsFile, "import './style.less'" + '\n' )
             fs.appendFileSync( _jsFile, '\n' )
-            fs.appendFileSync( _jsFile, "class Dropdown extends Component {" + '\n' )
+            fs.appendFileSync( _jsFile, "class " + item.NAME + " extends Component {" + '\n' )
             fs.appendFileSync( _jsFile, '\n' )
             fs.appendFileSync( _jsFile, "    constructor(props) {" + '\n' )
             fs.appendFileSync( _jsFile, "        super(props)" + '\n' )
@@ -70,7 +70,7 @@ source.forEach((item) => {
             fs.appendFileSync( _jsFile, "    }" + '\n' )
             fs.appendFileSync( _jsFile, "}" + '\n' )
             fs.appendFileSync( _jsFile, '\n' )
-            fs.appendFileSync( _jsFile, "export default Dropdown" + '\n' )
+            fs.appendFileSync( _jsFile, "export default " + item.NAME + '\n' )
 
             // write style.less
             fs.appendFileSync( _styleFile, '/**' + '\n' )

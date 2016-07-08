@@ -1,5 +1,5 @@
 /**
- * @desc Royal组件演示 Button
+ * @desc Royal组件演示 Layout
  * @author Jafeney
  * @dateTime 2016-07-01
  **/
@@ -37,16 +37,19 @@ class DemoLayout extends Component {
                     <h3>响应式栅格布局</h3>
                     <div>
                         <Row minWidth="sm">
-                            <Col className="Layout-col">一列</Col>
+                            <Col className="Layout-col">480屏</Col>
+                            <Col className="Layout-col">480屏</Col>
+                            <Col className="Layout-col">480屏</Col>
                         </Row>
                         <Row minWidth="md">
-                            <Col className="Layout-col">二列</Col>
-                            <Col className="Layout-col">二列</Col>
+                            <Col className="Layout-col">720屏</Col>
+                            <Col className="Layout-col">720屏</Col>
+                            <Col className="Layout-col">720屏</Col>
                         </Row>
                         <Row minWidth="lg">
-                            <Col className="Layout-col">三列</Col>
-                            <Col className="Layout-col">三列</Col>
-                            <Col className="Layout-col">三列</Col>
+                            <Col className="Layout-col">960屏</Col>
+                            <Col className="Layout-col">960屏</Col>
+                            <Col className="Layout-col">960屏</Col>
                         </Row>
                     </div>
 

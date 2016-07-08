@@ -49,7 +49,7 @@ class Button extends Component {
                     onClick={()=>{ this.callback && this.callback() }} type="button"
                     disabled={ this.disabled }
                     style={{ width:this.width, ...this.style }}
-                    className={ _className.join(' ') + ' ' + (this.className && this.className) }>
+                    className={ _className.join(' ') + ' ' + (this.className ? this.className : '') }>
                         { this.icon ? <Icon type={this.icon} />: null }
                         { this._renderText() }
                 </button>

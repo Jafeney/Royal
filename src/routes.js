@@ -13,6 +13,8 @@ import Icon from './containers/Icon/'
 import Layout from './containers/Layout/'
 
 import Button from './containers/Button/'
+import Checkbox from './containers/Checkbox/'
+import Radio from './containers/Radio/'
 
 const routes = (
     <Route>
@@ -20,6 +22,8 @@ const routes = (
             <Route path="icon" component={Icon} />
             <Route path="button" component={Button} />
             <Route path="layout" component={Layout} />
+            <Route path="checkbox" component={Checkbox} />
+            <Route path="radio" component={Radio} />
         </Route>
     </Route>
 )

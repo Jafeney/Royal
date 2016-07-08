@@ -8,7 +8,7 @@
 import React, { Component } from 'react' 
 import './style.less'
 
-class Dropdown extends Component {
+class Slider extends Component {
 
     constructor(props) {
         super(props)
@@ -19,4 +19,4 @@ class Dropdown extends Component {
     }
 }
 
-export default Dropdown
+export default Slider
