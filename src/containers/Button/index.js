@@ -1,5 +1,5 @@
 /**
- * @desc Royal组件演示 Button
+ * @desc Royal组件演示 Button按钮
  * @author Jafeney
  * @dateTime 2016-07-01
  * */
@@ -20,9 +20,8 @@ class DemoButton extends Component {
     render() {
         return (
             <div className="wrapper">
-                <h2>Button组件</h2>
-                <hr />
-                <div>
+                <h2 className="fixed">Button 按钮组件</h2>
+                <div className="content">
                     <h3>type</h3>
                     <div>
                         <Button text={'primary'} wrapClass={'Button-demo'} type={'primary'} />

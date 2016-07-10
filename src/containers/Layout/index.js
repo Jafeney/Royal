@@ -1,5 +1,5 @@
 /**
- * @desc Royal组件演示 Layout
+ * @desc Royal组件演示 Layout布局
  * @author Jafeney
  * @dateTime 2016-07-01
  **/
@@ -16,9 +16,8 @@ class DemoLayout extends Component {
     render() {
         return (
             <div className="wrapper">
-                <h2>Button组件</h2>
-                <hr />
-                <div>
+                <h2 className="fixed">Layout 布局组件</h2>
+                <div className="content">
                     <h3>简单栅格布局</h3>
                     <div>
                         <Row>

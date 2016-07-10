@@ -26,7 +26,6 @@ class Checkbox extends Component {
         this.state = {
             checked: this.checked
         }
-        console.log(this.state.checked);
     }
 
     onToggle() {

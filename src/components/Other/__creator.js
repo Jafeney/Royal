@@ -41,6 +41,13 @@ let fs = require('fs'),
             DATETIME : '2016-07-07',
             DESC: '加载中'
         },
+        {
+            NAME : 'Markdown',
+            TYPE : 'Other',
+            AUTHOR : 'Jafeney',
+            DATETIME : '2016-07-07',
+            DESC: '编辑器'
+        },
     ];
 
 source.forEach((item) => {

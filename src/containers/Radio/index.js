@@ -1,5 +1,5 @@
 /**
- * @desc Royal组件演示 Radio
+ * @desc Royal组件演示 Radio单选框
  * @author Jafeney
  * @dateTime 2016-07-01
  **/
@@ -25,9 +25,8 @@ class DemoLayout extends Component {
     render() {
         return (
             <div className="wrapper">
-                <h2>Radio组件</h2>
-                <hr />
-                <div>
+                <h2 className="fixed">Radio 单选框组件</h2>
+                <div className="content">
                     <h3>简单演示</h3>
                     <div>
                         <Row minWidth="md">

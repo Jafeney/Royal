@@ -1,5 +1,5 @@
 /**
- * @desc Royal组件演示 Checkbox
+ * @desc Royal组件演示 Checkbox复选框
  * @author Jafeney
  * @dateTime 2016-07-01
  **/
@@ -25,9 +25,8 @@ class DemoCheckbox extends Component {
     render() {
         return (
             <div className="wrapper">
-                <h2>Checkbox组件</h2>
-                <hr />
-                <div>
+                <h2 className="fixed">Checkbox 复选框组件</h2>
+                <div className="content">
                     <h3>简单演示</h3>
                     <div>
                         <Row minWidth="md">
