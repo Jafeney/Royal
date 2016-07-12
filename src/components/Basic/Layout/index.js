@@ -8,19 +8,20 @@ import React, { Component } from 'react'
 import './style.less'
 
 class Row extends Component {
-
     constructor(props) {
         super(props)
-        this.minWidth = this.props.minWidth || null;
-        this.style = this.props.style || null;
-        this.className = this.props.className || null;
+        this.state = {
+            minWidth : this.props.minWidth || null,
+            style : this.props.style || null,
+            className : this.props.className || null,
+        }
     }
 
     render() {
-        let _rowClass = this.minWidth ? "ry--row ry-row-" + this.minWidth + ' ' : "ry-row ";
-        let _className = this.className ? _rowClass + this.className : _rowClass;
+        let _rowClass = this.state.minWidth ? "ry--row ry-row-" + this.state.minWidth + ' ' : "ry-row ";
+        let _className = this.state.className ? _rowClass + this.state.className : _rowClass;
         return (
-            <div className={ _className } style={ this.style }>
+            <div className={ _className } style={ this.state.style }>
                 { this.props.children }
             </div>
         );
@@ -28,18 +29,19 @@ class Row extends Component {
 }
 
 class Col extends Component {
-
     constructor(props) {
         super(props)
-        this.style = this.props.style || null;
-        this.className = this.props.className || null;
+        this.state = {
+            style : this.props.style || null,
+            className : this.props.className || null,
+        }
     }
 
     render() {
-        let _className = this.className ? "ry-col "+ this.className : "ry-col";
+        let _className = this.state.className ? "ry-col "+ this.state.className : "ry-col";
         return (
-            <div className={ _className } style={ this.style }>
-                { this.props.children }
+            <div className={ _className } style={ this.state.style }>
+                { this.props.children } 
             </div>
         );
     }

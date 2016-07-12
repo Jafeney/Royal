@@ -12,30 +12,40 @@ class Button extends Component {
 
     constructor(props) {
         super(props);
-        this.type = props.type || null;
-        this.text = props.text || null;
-        this.font = props.font || null;
-        this.color = props.color || null;
-        this.bgColor = props.bgColor || null;
-        this.style = props.style || null;
-        this.className = props.className || null;
-        this.wrapStyle = props.wrapStyle || null;
-        this.wrapClass = props.wrapClass || null;
-        this.textStyle = props.textStyle || null;
-        this.textClass = props.textClass || null;
+
+        this.state = {
+            name : props.name || null,
+            text : props.text || null,
+            font : props.font || null,
+            color : props.color || null,
+            bgColor : props.bgColor || null,
+            style : props.style || null,
+            className : props.className || null,
+            wrapStyle : props.wrapStyle || null,
+            wrapClass : props.wrapClass || null,
+            textStyle : props.textStyle || null,
+            textClass : props.textClass || null,
+        }
     }
 
     render() {
         let _className = ['icon'];
-        if (this.type) { _className.push('icon-' + this.type) }
+        if (this.state.name) { _className.push('icon-' + this.state.name) }
 
         return (
-            <span style={ this.wrapStyle } className={ this.wrapClass } >
+            <span style={ this.state.wrapStyle } className={ this.state.wrapClass } >
                 <i
-                    style={{ fontSize: this.font, color: this.color, backgroundColor: this.bgColor, ...this.style }}
-                    className={ _className.join(' ') + ' ' + (this.className ? this.className : '') }>
+                    style={{ fontSize: this.state.font, color: this.state.color, backgroundColor: this.state.bgColor, ...this.state.style }}
+                    className={ _className.join(' ') + ' ' + (this.state.className ? this.state.className : '') }>
                 </i>
-                { this.text ? <label className={ this.textClass } style={{ cursor:'pointer', fontSize: this.font, color: this.color, ...this.textStyle }}> { this.text } </label> : null }
+                { this.state.text ?
+                    <label
+                        className={ this.state.textClass }
+                        style={{ cursor:'pointer', fontSize: this.state.font, color: this.state.color, ...this.state.textStyle }}>
+                        { this.state.text }
+                    </label> :
+                    null
+                }
             </span>
         );
     }

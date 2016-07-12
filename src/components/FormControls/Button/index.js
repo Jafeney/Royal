@@ -13,44 +13,45 @@ class Button extends Component {
 
     constructor(props) {
         super(props);
-
-        this.type = ['primary', 'default', 'secondary', 'ghost'].find((item) => item === props.type) || 'default';
-        this.size = ['large', 'small'].find((item) => item === props.size) || null;
-        this.text = props.text;
-        this.icon = props.icon;
-        this.shape = ['circle'].find((item) => item === props.shape) || null;
-        this.wrapStyle = props.wrapStyle;
-        this.wrapClass = props.wrapClass;
-        this.width = props.width || null;
-        this.style = props.style || null;
-        this.className = props.className || null;
-        this.disabled = !!props.disabled || false;
         this.callback = props.callback || null;
+        this.state = {
+            type : ['primary', 'default', 'secondary', 'ghost'].find((item) => item === props.type) || 'default',
+            size : ['large', 'small'].find((item) => item === props.size) || null,
+            text : props.text,
+            icon : props.icon,
+            shape : ['circle'].find((item) => item === props.shape) || null,
+            wrapStyle : props.wrapStyle,
+            wrapClass : props.wrapClass,
+            width : props.width || null,
+            style : props.style || null,
+            className : props.className || null,
+            disabled : !!props.disabled || false,
+        }
     }
 
     _renderText() {
-        if (this.text && this.icon) {
-            return (<span>{' ' + this.text}</span>)
+        if (this.state.text && this.state.icon) {
+            return (<span>{' ' + this.state.text}</span>)
         }
-        if (this.text && !this.icon) {
-            return (<span>{this.text}</span>);
+        if (this.state.text && !this.state.icon) {
+            return (<span>{this.state.text}</span>);
         }
     }
 
     render() {
         let _className = ['ry-btn'];
-        _className.push('ry-btn-' + this.type);
-        if (this.size) { _className.push('ry-btn-' + this.size) }
-        if (this.shape) { _className.push('ry-btn-' + this.shape) }
-        if (this.disabled) { _className.push('disabled') }
+        _className.push('ry-btn-' + this.state.type);
+        if (this.state.size) { _className.push('ry-btn-' + this.state.size) }
+        if (this.state.shape) { _className.push('ry-btn-' + this.state.shape) }
+        if (this.state.disabled) { _className.push('disabled') }
         return (
-            <span style={ this.wrapStyle } className={ this.wrapClass }>
+            <span style={ this.state.wrapStyle } className={ this.state.wrapClass }>
                 <button
                     onClick={()=>{ this.callback && this.callback() }} type="button"
-                    disabled={ this.disabled }
-                    style={{ width:this.width, ...this.style }}
-                    className={ _className.join(' ') + ' ' + (this.className ? this.className : '') }>
-                        { this.icon ? <Icon type={this.icon} />: null }
+                    disabled={ this.state.disabled }
+                    style={{ width:this.state.width, ...this.state.style }}
+                    className={ _className.join(' ') + ' ' + (this.state.className ? this.state.className : '') }>
+                        { this.state.icon ? <Icon name={this.state.icon} />: null }
                         { this._renderText() }
                 </button>
             </span>

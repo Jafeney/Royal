@@ -96,7 +96,7 @@ class Demo extends Component {
         return (
             <div>
                 <div className="sidebar">
-                    <h1><a href="#/"><Icon type={"circle-blank"} /> Royal</a></h1>
+                    <h1><a href="#/"><Icon name={"circle-blank"} /> Royal</a></h1>
                     <div className="sidebar-container">
                         <ul className="sidebar-list">
                             { this._renderSidebar() }

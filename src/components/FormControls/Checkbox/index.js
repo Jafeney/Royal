@@ -12,19 +12,19 @@ class Checkbox extends Component {
 
     constructor(props) {
         super(props)
-        this.text = props.text || null;
-        this.wrapStyle = props.wrapStyle || null;
-        this.wrapClass = props.wrapClass || null;
-        this.textStyle = props.textStyle || null;
-        this.textClass = props.textClass || null;
-        this.style = props.style || null;
-        this.className = props.className || null;
         this.onConfirm = props.onConfirm || null;
         this.onCancel = props.onCancel || null;
-        this.disabled = props.disabled || false;
-        this.checked = props.checked || false;
+
         this.state = {
-            checked: this.checked
+            text : props.text || null,
+            wrapStyle : props.wrapStyle || null,
+            wrapClass : props.wrapClass || null,
+            textStyle : props.textStyle || null,
+            textClass : props.textClass || null,
+            style : props.style || null,
+            className : props.className || null,
+            disabled : props.disabled || false,
+            checked : props.checked || false,
         }
     }
 
@@ -38,15 +38,15 @@ class Checkbox extends Component {
     }
 
     render() {
-        let _className = this.className ? "ry-checkbox" + this.className : "ry-checkbox";
+        let _className = this.state.className ? "ry-checkbox" + this.state.className : "ry-checkbox";
         _className = this.state.checked ? _className + " ry-checked" : _className;
         return (
-            <label className={ "ry-checkbox-wrapper " + (this.wrapClass ? this.wrapClass : '') + (this.disabled ? " ry-disabled" : '') } style={ this.wrapStyle } >
+            <label className={ "ry-checkbox-wrapper " + (this.state.wrapClass ? this.state.wrapClass : '') + (this.state.disabled ? " ry-disabled" : '') } style={ this.state.wrapStyle } >
                 <span className={ _className }>
-                    <span className={ "ry-checkbox-inner " + (this.className ? this.className : '') } style={ this.style }></span>
-                    <input type="checkbox" value="on" onClick={()=> !this.disabled && this.onToggle() } disabled={this.disabled} className="ry-checkbox-input"  />
+                    <span className={ "ry-checkbox-inner " + (this.state.className ? this.state.className : '') } style={ this.state.style }></span>
+                    <input type="checkbox" value="on" onClick={()=> !this.state.disabled && this.onToggle() } disabled={this.state.disabled} className="ry-checkbox-input"  />
                 </span>
-                <span className={ "ry-checkbox-text " + (this.textClass ? this.textClass : '') } style={ this.textStyle }>{ this.text }</span>
+                <span className={ "ry-checkbox-text " + (this.state.textClass ? this.state.textClass : '') } style={ this.state.textStyle }>{ this.state.text }</span>
             </label>
         );
     }

@@ -36,6 +36,8 @@ class DemoCheckbox extends Component {
                             <Col>
                                 <Checkbox checked={true} text="按钮-默认选中" />
                             </Col>
+                        </Row>
+                        <Row>
                             <Col>
                                 <Checkbox checked={true} disabled={true} text="不可用按钮" />
                             </Col>
@@ -48,7 +50,7 @@ class DemoCheckbox extends Component {
                                 <Checkbox onConfirm={this.confirm} text="按钮－触发onConfirm事件"  />
                             </Col>
                             <Col>
-                                <Checkbox onCancel={this.cancel} text="按钮－触发onCancel事件" />
+                                <Checkbox onCancel={this.cancel} text="按钮－触发onCancel事件" /> 
                             </Col>
                         </Row>
                     </div>

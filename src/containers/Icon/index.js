@@ -18,7 +18,7 @@ class DemoIcon extends Component {
         return Icons.map((icon) => {
             return ([
                 <Icon
-                    type={icon.split('icon-')[1]}
+                    name={icon.split('icon-')[1]}
                     text={icon.split('icon-')[1]}
                     className={'Icon-demo'}
                     wrapClass={'Icon-wrap'}
@@ -45,8 +45,8 @@ class DemoIcon extends Component {
                     <div>
                         <ul className="api-list">
                             <li>
-                                <strong>type</strong>
-                                <span>Icon 的类型，即上面 Icon 的名称</span>
+                                <strong>name</strong>
+                                <span>Icon 的名称，具体参见上面演示的图标的名称</span>
                             </li>
                             <li>
                                 <strong>text</strong>
