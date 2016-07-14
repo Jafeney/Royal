@@ -108,7 +108,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Pagination",
-                        complete: false,
+                        complete: true,
                     },
                     {
                         name: "Steps",

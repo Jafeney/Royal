@@ -25,18 +25,24 @@ class Table extends Component {
     }
 
     onSelectAll() {
-        this.refs['item_1'].setState({checked:true})
-        this.refs['item_2'].setState({checked:true})
+        for (let ref in this.refs) {
+            if (ref!=='selectAll') {
+                this.refs[ref].setState({checked:true})
+            }
+        }
     }
 
     offSelectAll() {
-        this.refs['item_1'].setState({checked: false})
-        this.refs['item_2'].setState({checked: false})
+        for (let ref in this.refs) {
+            if (ref!=='selectAll') {
+                this.refs[ref].setState({checked:false})
+            }
+        }
     }
 
     _renderHead() {
         return this.state.columns.map((item,i) => {
-            return [<th>{i===0?<Checkbox ref="selectAll" onConfirm={()=>this.selectAll()} onCancel={()=>this.cancelSelectAll} />:''}{item.title}</th>]
+            return [<th>{i===0?<Checkbox ref="selectAll" onConfirm={()=>this.onSelectAll()} onCancel={()=>this.offSelectAll()} />:''}{item.title}</th>]
         })
     }
 

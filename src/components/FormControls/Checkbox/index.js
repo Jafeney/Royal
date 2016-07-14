@@ -38,7 +38,6 @@ class Checkbox extends Component {
     }
 
     render() {
-        console.log(this.state.checked)
         let _className = this.state.className ? "ry-checkbox" + this.state.className : "ry-checkbox";
         _className = this.state.checked ? _className + " ry-checked" : _className;
         return (
