@@ -32,7 +32,7 @@ module.exports = {
         ]
     },
     externals: { // 外部依赖
-        'citys': 'Citys'
+        //'citys': 'Citys'
     },
     plugins: [
         // new webpack.HotModuleReplacementPlugin(),  //上线时开启
@@ -41,7 +41,7 @@ module.exports = {
                 NODE_ENV: JSON.stringify("production")
             }
         }),
-        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),  //上线时开启
+        // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),  //上线时开启
         new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.NoErrorsPlugin()

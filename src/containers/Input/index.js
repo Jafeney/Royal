@@ -16,12 +16,12 @@ class DemoInput extends Component {
 
     onChange(text) {
         this.refs["change"].setState({checkedStatus:"fail"})
-        this.refs["change"].setState({checkedText:text.target.value})
+        this.refs["change"].setState({checkedText:text})
     }
 
     onBlur(text) {
         this.refs['blur'].setState({checkedStatus:"success"})
-        this.refs['blur'].setState({disabled:true})    
+        this.refs['blur'].setState({disabled:true})
     }
 
     render() {
@@ -124,6 +124,14 @@ class DemoInput extends Component {
                             <li>
                                 <strong>disabled</strong>
                                 <span>输入框不可用状态</span>
+                            </li>
+                            <li>
+                                <strong>onChange</strong>
+                                <span>输入框输入内容改变触发的事件</span>
+                            </li>
+                            <li>
+                                <strong>onBlur</strong>
+                                <span>输入框焦点事件改变触发的事件</span>
                             </li>
                         </ul>
                     </div>

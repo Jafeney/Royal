@@ -32,6 +32,16 @@ hr {
     margin-top: 30px;
 }
 
+.logo {
+    img {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        top: 10px;
+        margin-right: 15px;
+    }
+}
+
 .sidebar {
     position: fixed;
     z-index: 2;
@@ -60,18 +70,32 @@ hr {
     padding-left: 40px;
     padding-bottom: 40px;
     line-height: 2;
+    cursor: pointer;
 
     ul {
         list-style: circle;
         width: 160px;
 
-        li.active {
+        li {
             box-sizing: border-box;
-            border-right: 4px solid #ff634d;
-            color: #ff634d;
 
-            a {
+            .ry-complete {
+                float: right;
+                margin-right: 30px;
+                margin-top: 5px;
+            }
+
+            &.active {
+                border-right: 4px solid #ff634d;
                 color: #ff634d;
+
+                .ry-complete {
+                    margin-right: 26px;
+                }
+
+                a {
+                    color: #ff634d;
+                }
             }
         }
     }

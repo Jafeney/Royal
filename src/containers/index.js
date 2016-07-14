@@ -19,57 +19,211 @@ class Demo extends Component {
         let sidebar = [
             {
                 name: "Basic",
-                list: ["Icon","Layout"]
+                list: [
+                    {
+                        name: "Icon",
+                        complete: true,
+                    },
+                    {
+                        name: "Layout",
+                        complete: true,
+                    },
+                ]
             },
             {
                 name: "FormControls",
                 list: [
-                    "Button",
-                    "Cascader",
-                    "Checkbox",
-                    "DatePicker",
-                    "Form",
-                    "Input",
-                    "InputNumber",
-                    "Radio",
-                    "Rate",
-                    "Select",
-                    "Slider",
-                    "Switch",
-                    "Transfer",
-                    "TreeSelect",
-                    "Upload",
+                    {
+                        name: "Button",
+                        complete: true,
+                    },
+                    {
+                        name: "Cascader",
+                        complete: false,
+                    },
+                    {
+                        name: "Checkbox",
+                        complete: true,
+                    },
+                    {
+                        name: "DatePicker",
+                        complete: false,
+                    },
+                    {
+                        name: "Form",
+                        complete: false,
+                    },
+                    {
+                        name: "Input",
+                        complete: true,
+                    },
+                    {
+                        name: "InputNumber",
+                        complete: false,
+                    },
+                    {
+                        name: "Radio",
+                        complete: true,
+                    },
+                    {
+                        name: "Rate",
+                        complete: false,
+                    },
+                    {
+                        name: "Select",
+                        complete: true,
+                    },
+                    {
+                        name: "Slider",
+                        complete: false,
+                    },
+                    {
+                        name: "Switch",
+                        complete: false,
+                    },
+                    {
+                        name: "Transfer",
+                        complete: false,
+                    },
+                    {
+                        name: "TreeSelect",
+                        complete: false,
+                    },
+                    {
+                        name: "Upload",
+                        complete: false,
+                    },
                 ]
             },
             {
                 name: "Navigation",
-                list: ["BreadCrumb","Menu","Pagination","Steps","Tabs"]
+                list: [
+                    {
+                        name: "BreadCrumb",
+                        complete: false,
+                    },
+                    {
+                        name: "Menu",
+                        complete: false,
+                    },
+                    {
+                        name: "Pagination",
+                        complete: false,
+                    },
+                    {
+                        name: "Steps",
+                        complete: false,
+                    },
+                    {
+                        name: "Tabs",
+                        complete: false,
+                    },
+                ]
             },
             {
                 name: "Other",
-                list: ["Affix","BackTop","LocaleProvider","QueueAnimation","Spin","Markdown"]
+                list: [
+                    {
+                        name: "Affix",
+                        complete: false,
+                    },
+                    {
+                        name: "BackTop",
+                        complete: false,
+                    },
+                    {
+                        name: "LocaleProvider",
+                        complete: false,
+                    },
+                    {
+                        name: "QueueAnimation",
+                        complete: false,
+                    },
+                    {
+                        name: "Spin",
+                        complete: false,
+                    },
+                    {
+                        name: "Markdown",
+                        complete: false,
+                    },
+                ]
             },
             {
                 name: "Views",
                 list: [
-                    "Alert",
-                    "Badge",
-                    "Calendar",
-                    "Card",
-                    "Carousel",
-                    "Collapse",
-                    "Dropdown",
-                    "Message",
-                    "Modal",
-                    "Notification",
-                    "PopConfirm",
-                    "PopOver",
-                    "Progress",
-                    "Table",
-                    "Tag",
-                    "Timeline",
-                    "Tooltip",
-                    "Tree"
+                    {
+                        name: "Alert",
+                        complete: false,
+                    },
+                    {
+                        name: "Badge",
+                        complete: false,
+                    },
+                    {
+                        name: "Calendar",
+                        complete: false,
+                    },
+                    {
+                        name: "Card",
+                        complete: false,
+                    },
+                    {
+                        name: "Carousel",
+                        complete: false,
+                    },
+                    {
+                        name: "Collapse",
+                        complete: false,
+                    },
+                    {
+                        name: "Dropdown",
+                        complete: false,
+                    },
+                    {
+                        name: "Message",
+                        complete: false,
+                    },
+                    {
+                        name: "Modal",
+                        complete: false,
+                    },
+                    {
+                        name: "Notification",
+                        complete: false,
+                    },
+                    {
+                        name: "PopConfirm",
+                        complete: false,
+                    },
+                    {
+                        name: "PopOver",
+                        complete: false,
+                    },
+                    {
+                        name: "Progress",
+                        complete: false,
+                    },
+                    {
+                        name: "Table",
+                        complete: true,
+                    },
+                    {
+                        name: "Tag",
+                        complete: false,
+                    },
+                    {
+                        name: "Timeline",
+                        complete: false,
+                    },
+                    {
+                        name: "Tooltip",
+                        complete: false,
+                    },
+                    {
+                        name: "Tree",
+                        complete: false,
+                    },
                 ]
             },
         ];
@@ -80,8 +234,8 @@ class Demo extends Component {
                     <ul>
                         {item.list.map((sub) => {
                             return [
-                                <li className={route === sub.toLowerCase() ? "active" : ""}>
-                                    <a href={"#/"+sub.toLowerCase()}>{sub}</a>
+                                <li className={route === sub.name.toLowerCase() ? "active" : ""}>
+                                    <a href={"#/"+sub.name.toLowerCase()}>{sub.name} {sub.complete?<Icon className="ry-complete" name="ok" />:''}</a>
                                 </li>
                             ]
                         })}
@@ -96,7 +250,7 @@ class Demo extends Component {
         return (
             <div>
                 <div className="sidebar">
-                    <h1><a href="#/"><Icon name={"circle-blank"} /> Royal</a></h1>
+                    <h1><a href="#/" className="logo"><img src="../../icon.ico" />Royal</a></h1>
                     <div className="sidebar-container">
                         <ul className="sidebar-list">
                             { this._renderSidebar() }

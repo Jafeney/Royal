@@ -15,10 +15,12 @@ class DemoCheckbox extends Component {
     }
 
     confirm () {
+        this.refs['apple'].setState({'checked': true})
         alert('显示为选中状态时触发')
     }
 
     cancel () {
+        console.log(this)
         alert('显示为取消状态时触发')
     }
 
@@ -33,6 +35,8 @@ class DemoCheckbox extends Component {
                             <Col>
                                 <Checkbox checked={false} text="按钮-默认未选中" />
                             </Col>
+                        </Row>
+                        <Row>
                             <Col>
                                 <Checkbox checked={true} text="按钮-默认选中" />
                             </Col>
@@ -47,10 +51,10 @@ class DemoCheckbox extends Component {
                     <div>
                         <Row minWidth="md">
                             <Col>
-                                <Checkbox onConfirm={this.confirm} text="按钮－触发onConfirm事件"  />
+                                <Checkbox onConfirm={this.confirm.bind(this)} text="按钮－触发onConfirm事件"  />
                             </Col>
                             <Col>
-                                <Checkbox onCancel={this.cancel} text="按钮－触发onCancel事件" /> 
+                                <Checkbox onCancel={this.cancel.bind(this)} text="按钮－触发onCancel事件" />
                             </Col>
                         </Row>
                     </div>
@@ -58,9 +62,9 @@ class DemoCheckbox extends Component {
                     <div>
                         <Row minWidth="md">
                             <Col>
-                                <Checkbox wrapClass={'Checkbox-demo'} text="苹果🍎"  />
-                                <Checkbox wrapClass={'Checkbox-demo'} text="梨头🍐"  />
-                                <Checkbox wrapClass={'Checkbox-demo'} text="橘子🍊"  />
+                                <Checkbox ref="apple" wrapClass={'Checkbox-demo'} text="苹果🍎"  />
+                                <Checkbox ref="pear" wrapClass={'Checkbox-demo'} text="梨头🍐"  />
+                                <Checkbox ref="orange" wrapClass={'Checkbox-demo'} text="橘子🍊"  />
                             </Col>
                         </Row>
                     </div>

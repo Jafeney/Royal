@@ -1,11 +1,11 @@
 /**
- * @type undefined Component
+ * @type Views Component
  * @desc 标签
  * @author Jafeney
  * @dateTime 2016-07-07
  **/
 
-import React, { Component } from 'react' 
+import React, { Component } from 'react'
 import './style.less'
 
 class Tag extends Component {

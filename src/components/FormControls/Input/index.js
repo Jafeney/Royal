@@ -47,8 +47,8 @@ class Input extends Component {
                     value={this.state.value}
                     type="text"
                     className={"ry-input" + (this.state.className ? " " + this.state.className : "")}
-                    onChange = {this.onChange && ((text)=>this.onChange(text))}
-                    onBlur = {this.onBlur && ((text)=>this.onBlur(text))}
+                    onChange = {this.onChange && ((text)=>this.onChange(text.target.value))}
+                    onBlur = {this.onBlur && ((text)=>this.onBlur(text.target.value))}
                     defaultValue={this.state.defaultValue}
                     placeholder={this.state.placeholder} />
                 <span
