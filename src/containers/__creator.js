@@ -259,6 +259,13 @@ let fs = require('fs'),
             DESC: '气泡卡片'
         },
         {
+            NAME : 'PopUp',
+            TYPE : 'Views',
+            AUTHOR : 'Jafeney',
+            DATETIME : '2016-07-07',
+            DESC: '浮出式提示'
+        },
+        {
             NAME : 'Progress',
             TYPE : 'Views',
             AUTHOR : 'Jafeney',

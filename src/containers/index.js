@@ -141,7 +141,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Spin",
-                        complete: false,
+                        complete: true,
                     },
                     {
                         name: "Markdown",
@@ -186,7 +186,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Modal",
-                        complete: false,
+                        complete: true,
                     },
                     {
                         name: "Notification",
@@ -199,6 +199,10 @@ class Demo extends Component {
                     {
                         name: "PopOver",
                         complete: false,
+                    },
+                    {
+                        name: "PopUp",
+                        complete: true,
                     },
                     {
                         name: "Progress",

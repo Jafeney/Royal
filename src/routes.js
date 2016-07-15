@@ -40,6 +40,7 @@ import Notification from './containers/Notification/'
 import Pagination from './containers/Pagination/'
 import PopConfirm from './containers/PopConfirm/'
 import PopOver from './containers/PopOver/'
+import PopUp from './containers/PopUp/'
 import Progress from './containers/Progress/'
 import QueueAnimation from './containers/QueueAnimation/'
 import Rate from './containers/Rate/'
@@ -91,6 +92,7 @@ const routes = (
             <Route path="pagination" component={Pagination} />
             <Route path="popconfirm" component={PopConfirm} />
             <Route path="popover" component={PopOver} />
+            <Route path="popup" component={PopUp} />
             <Route path="progress" component={Progress} />
             <Route path="queueanimation" component={QueueAnimation} />
             <Route path="rate" component={Rate} />
@@ -109,7 +111,6 @@ const routes = (
             <Route path="tree" component={Tree} />
             <Route path="treeselect" component={TreeSelect} />
             <Route path="upload" component={Upload} />
-
         </Route>
     </Route>
 )

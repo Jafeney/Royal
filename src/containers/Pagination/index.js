@@ -27,7 +27,7 @@ class DemoPagination extends Component {
                     <h3>组件演示</h3>
                     <div>
                         <Row>
-                            <Col><Pagination wrapStyle={{float: 'left'}} totalPage={ Math.ceil(total/pageSize) } selectPage={ (page)=>this.onChangePage(page) } pageSpace={3}/></Col>
+                            <Col><Pagination wrapStyle={{float: 'left'}} totalPage={ Math.ceil(total/pageSize) } selectPage={ (page)=>this.onChangePage(page) } pageSpace={2}/></Col>
                         </Row>
                         <Row>
                             <Col><Pagination isSimple={true} wrapStyle={{float: 'left'}} totalPage={ Math.ceil(total/pageSize) } selectPage={ (page)=>this.onChangePage(page) } pageSpace={3}/></Col>
