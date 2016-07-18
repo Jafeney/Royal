@@ -124,6 +124,10 @@ class Demo extends Component {
                 name: "Other",
                 list: [
                     {
+                        name: "AddressPicker",
+                        complete: true,
+                    },
+                    {
                         name: "Affix",
                         complete: false,
                     },

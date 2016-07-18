@@ -7,6 +7,13 @@
 let fs = require('fs'),
     source = [
         {
+            NAME : 'AddressPicker',
+            TYPE : 'Other',
+            AUTHOR : 'Jafeney',
+            DATETIME : '2016-07-07',
+            DESC: '地址选择器'
+        },
+        {
             NAME : 'Affix',
             TYPE : 'Other',
             AUTHOR : 'Jafeney',

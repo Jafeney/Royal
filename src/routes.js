@@ -16,6 +16,7 @@ import Button from './containers/Button/'
 import Checkbox from './containers/Checkbox/'
 import Radio from './containers/Radio/'
 
+import AddressPicker from './containers/AddressPicker/'
 import Affix from './containers/Affix/'
 import Alert from './containers/Alert/'
 import BackTop from './containers/BackTop/'
@@ -68,6 +69,7 @@ const routes = (
             <Route path="layout" component={Layout} />
             <Route path="checkbox" component={Checkbox} />
             <Route path="radio" component={Radio} />
+            <Route path="addresspicker" component={AddressPicker} />
             <Route path="affix" component={Affix} />
             <Route path="alert" component={Alert} />
             <Route path="backtop" component={BackTop} />
