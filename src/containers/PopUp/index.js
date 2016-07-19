@@ -15,6 +15,12 @@ class DemoPopUp extends Component {
         super(props)
     }
 
+    popShow(text1,text2) {
+        this.pop.show()
+        console.log(text1)
+        console.log(text2)
+    }
+
     render() {
         return (
             <div className='wrapper'>
@@ -23,7 +29,7 @@ class DemoPopUp extends Component {
                     <h3>组件演示</h3>
                     <div>
                         <Row>
-                            <Col><Button type={'primary'} text={"弹出提示"} callback={()=>this.pop.show()} /></Col>
+                            <Col><Button type={'primary'} text={"弹出提示"} callback={this.popShow.bind(this,'111','222')} /></Col>
                         </Row>
                     </div>
                     <hr />
