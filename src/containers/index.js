@@ -116,7 +116,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Tabs",
-                        complete: false,
+                        complete: true,
                     },
                 ]
             },

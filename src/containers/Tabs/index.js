@@ -4,9 +4,9 @@
  * @dateTime 2016-07-07
  **/
 
-import React, { Component } from 'react' 
-import { Row, Col } from '../../components/Basic/Layout/' 
-import Tabs from '../../components/Navigation/Tabs/'
+import React, { Component } from 'react'
+import { Row, Col } from '../../components/Basic/Layout/'
+import { Tabs, TabPane } from '../../components/Navigation/Tabs/'
 
 class DemoTabs extends Component {
 
@@ -22,7 +22,19 @@ class DemoTabs extends Component {
                     <h3>组件演示</h3>
                     <div>
                         <Row>
-                            <Col>演示的内容</Col>
+                            <Col>
+                                <Tabs>
+                                    <TabPane title="tab1" icon="circle-blank" selected={false}>
+                                        <p>这里是tab1</p>
+                                    </TabPane>
+                                    <TabPane title="tab2" icon="circle-blank" selected={true}>
+                                        <p>这里是tab2</p>
+                                    </TabPane>
+                                    <TabPane title="tab3" icon="circle-blank" selected={false}>
+                                        <p>这里是tab3</p>
+                                    </TabPane>
+                                </Tabs>
+                            </Col>
                         </Row>
                     </div>
                     <hr />
