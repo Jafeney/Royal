@@ -5,17 +5,28 @@
  * @dateTime 2016-07-07
  **/
 
-import React, { Component } from 'react' 
+import React, { Component } from 'react'
 import './style.less'
 
 class QueueAnimation extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            speed: props.speed || null,
+            name: props.name || null,
+        }
+    }
+
+    changeAnimate(name) {
+        this.setState({name: name})
     }
 
     render() {
-        return (<span>进出场动画</span>)
+        let _speed = 'ry-animated' + (this.state.speed ? '-'+this.state.speed : '');
+        return (
+            <span className={_speed + ' ' + this.state.name}>{this.props.children}</span>
+        )
     }
 }
 

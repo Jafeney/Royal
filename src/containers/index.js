@@ -141,7 +141,7 @@ class Demo extends Component {
                     },
                     {
                         name: "QueueAnimation",
-                        complete: false,
+                        complete: true,
                     },
                     {
                         name: "Spin",
