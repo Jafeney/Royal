@@ -13,6 +13,7 @@ class QueueAnimation extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            style: props.style || null,
             speed: props.speed || null,
             name: props.name || null,
         }
@@ -25,7 +26,7 @@ class QueueAnimation extends Component {
     render() {
         let _speed = 'ry-animated' + (this.state.speed ? '-'+this.state.speed : '');
         return (
-            <span className={_speed + ' ' + this.state.name}>{this.props.children}</span>
+            <span style={this.state.style} className={_speed + ' ' + this.state.name}>{this.props.children}</span>
         )
     }
 }

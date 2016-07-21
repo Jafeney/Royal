@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import { Row, Col } from '../../components/Basic/Layout/'
+import QueueAnimation from '../../components/Other/QueueAnimation/'
 import Tabs from '../../components/Navigation/Tabs/'
 
 class DemoTabs extends Component {
@@ -25,13 +26,25 @@ class DemoTabs extends Component {
                             <Col>
                                 <Tabs>
                                     <Tabs.Pane onClick={()=>console.log('切换到tab1')} title="tab1" icon="circle-blank" selected={false}>
-                                        <p>这里是tab1</p>
+                                        <QueueAnimation speed={'zing'} name="fadeInLeft" style={{width: '100%'}}>
+                                            <p style={{width: 800, textAlign: 'center'}}>
+                                                <img src="http://www.ah.xinhuanet.com/2016-04/14/1118619097_14606009478061n.jpg" />
+                                            </p>
+                                        </QueueAnimation>
                                     </Tabs.Pane>
                                     <Tabs.Pane onClick={()=>console.log('切换到tab2')} title="tab2" icon="circle-blank" selected={true}>
-                                        <p>这里是tab2</p>
+                                        <QueueAnimation speed={'zing'}  name="fadeInLeft" style={{width: '100%'}}>
+                                            <p style={{width: 800, textAlign: 'center'}}>
+                                                <img src="http://pic.6188.com/upload_6188s/flashAll/s800/20130409/1365470953NgSSbf.jpg" />
+                                            </p>
+                                        </QueueAnimation>
                                     </Tabs.Pane>
                                     <Tabs.Pane onClick={()=>console.log('切换到tab3')} title="tab3" icon="circle-blank" selected={false}>
-                                        <p>这里是tab3</p>
+                                        <QueueAnimation speed={'zing'}  name="fadeInLeft" style={{width: '100%'}}>
+                                            <p style={{width: 800, textAlign: 'center'}}>
+                                                <img src="http://pic.6188.com/upload_6188s/flashAll/s800/20130409/1365470958uArpzB.jpg" />
+                                            </p>
+                                        </QueueAnimation>
                                     </Tabs.Pane>
                                 </Tabs>
                             </Col>
