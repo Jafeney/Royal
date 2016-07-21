@@ -14,41 +14,58 @@ class Tabs extends Component {
     constructor(props) {
         super(props)
         this.panels = this.props.children;
+        this.state = {
+            tabSelected: []
+        }
+        for (let i = 0; i < this.panels.length ; i++) {
+            this.state.tabSelected.push(this.panels[i].props.selected);
+        }
+    }
+
+    switchTab(i) {
+        let _arr = [];
+        this.state.tabSelected.map((item,ii)=>{
+            _arr.push(i===ii)
+        })
+        this.state.tabSelected.map((item,ii) => this.setState({tabSelected: _arr}))
+        this.panels[i].props.onClick && this.panels[i].props.onClick()
     }
 
     _renderHeader() {
-        return this.panels.map(item => [
-            <li className={item.props.selected ? 'active': ''}
-                onClick={item.props.onClick && item.props.onClick()}>
-                <Icon name={item.props.icon} />
+        return this.panels.map((item,i) => [
+            <li className={this.state.tabSelected[i] ? 'ry-active': ''}
+                onClick={()=>this.switchTab(i)}>
+                <Icon wrapStyle={{marginRight:5}} name={item.props.icon} />
                 <span>{item.props.title}</span>
             </li>
         ])
     }
 
     _renderMainer() {
-        return this.panels.map(item => [
-            <li className="ry-tab-pane">{item.props.children}</li>
+        return this.panels.map((item,i) => [
+            <li className={this.state.tabSelected[i] ? 'ry-active': ''}>
+                {item.props.children}
+            </li>
         ])
     }
 
     render() {
         return (
             <div className="ry-tabs">
-                <ul className="header">
+                <ul className="ry-tabs-header">
                     {this._renderHeader()}
                 </ul>
-                <ul className="mainer">{this._renderMainer()}</ul>
+                <ul className="ry-tabs-mainer">{this._renderMainer()}</ul>
             </div>
         )
     }
 }
 
-class TabPane extends Component {
-
+class Pane extends Tabs {
     constructor(props) {
         super(props)
         this.state = {
+            ref: props.ref || null,
             title: props.title || null,
             icon: props.icon || null,
             selected: props.selected || false,
@@ -57,8 +74,8 @@ class TabPane extends Component {
     }
 
     render() {
-        return (<div className="ry-tab-panes">{this.props.children}</div>)
+        return (<div>{this.props.children}</div>)
     }
 }
 
-export { Tabs, TabPane }
+export default Tabs

@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react'
 import { Row, Col } from '../../components/Basic/Layout/'
-import { Tabs, TabPane } from '../../components/Navigation/Tabs/'
+import Tabs from '../../components/Navigation/Tabs/'
 
 class DemoTabs extends Component {
 
@@ -24,15 +24,15 @@ class DemoTabs extends Component {
                         <Row>
                             <Col>
                                 <Tabs>
-                                    <TabPane title="tab1" icon="circle-blank" selected={false}>
+                                    <Tabs.Pane onClick={()=>console.log('切换到tab1')} title="tab1" icon="circle-blank" selected={false}>
                                         <p>这里是tab1</p>
-                                    </TabPane>
-                                    <TabPane title="tab2" icon="circle-blank" selected={true}>
+                                    </Tabs.Pane>
+                                    <Tabs.Pane onClick={()=>console.log('切换到tab2')} title="tab2" icon="circle-blank" selected={true}>
                                         <p>这里是tab2</p>
-                                    </TabPane>
-                                    <TabPane title="tab3" icon="circle-blank" selected={false}>
+                                    </Tabs.Pane>
+                                    <Tabs.Pane onClick={()=>console.log('切换到tab3')} title="tab3" icon="circle-blank" selected={false}>
                                         <p>这里是tab3</p>
-                                    </TabPane>
+                                    </Tabs.Pane>
                                 </Tabs>
                             </Col>
                         </Row>
