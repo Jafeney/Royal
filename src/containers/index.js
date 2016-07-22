@@ -182,7 +182,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Dropdown",
-                        complete: false,
+                        complete: true,
                     },
                     {
                         name: "Message",

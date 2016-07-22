@@ -5,17 +5,51 @@
  * @dateTime 2016-07-07
  **/
 
-import React, { Component } from 'react' 
+import React, { Component } from 'react'
+import Icon from '../../Basic/Icon/'
+import QueueAnimation from '../../Other/QueueAnimation/'
 import './style.less'
 
 class Dropdown extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            title: props.title || null,
+            dataList: props.dataList || null,
+            dropped: props.dropped || false,
+        }
+        this.renderItem = props.renderItem || null,
+        this.icon = props.dropped ? "angle-up" : "angle-down";
+    }
+
+    _renderItem() {
+        return this.state.dataList.map(item =>
+            this.renderItem && this.renderItem(item)
+        )
+    }
+
+    onToggle() {
+        let newState = !this.state.dropped
+        this.setState({...this.state, dropped: newState})
+        let _icon = this.state.dropped ? "angle-down" : "angle-up";
+        this.refs.icon.changeName(_icon)
     }
 
     render() {
-        return (<span>下拉菜单</span>)
+        return (
+            <div className="ry-dropdown">
+                <div className="show-box" onClick={ () => this.onToggle() }>
+                    <span className="title">{ this.state.title }</span>
+                    <Icon ref="icon"  name={this.icon} />
+                </div>
+                <ul className={ this.state.dropped ? "drop-list ry-active" : "drop-list" }>
+                    <QueueAnimation speed="zing" name="dropDown">
+                    { this._renderItem() }
+                    </QueueAnimation>
+                </ul>
+            </div>
+        )
     }
 }
 

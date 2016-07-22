@@ -28,6 +28,10 @@ class Button extends Component {
         }
     }
 
+    changeName(name) {
+        name && this.setState({ name: name })
+    }
+
     render() {
         let _className = ['icon'];
         if (this.state.name) { _className.push('icon-' + this.state.name) }
