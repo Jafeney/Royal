@@ -12,13 +12,17 @@ class Slider extends Component {
 
     constructor(props) {
         super(props)
-        this.moveFlag = false;
-        this.nowX = 0, this.nowWidth = 0;
         this.state = {
             wrapStyle: props.wrapStyle || null,
             wrapClass: props.wrapClass || null,
             progress: props.progress || 50,
+            percent: 0,
+            showPercent: false,
         }
+        this.lastProgress = 0;
+        this.flag = false;
+        this.currentX = 0, this.currentWidth = 0;
+        this.callback = props.callback || null;
     }
 
     handleClick(e) {
@@ -30,42 +34,58 @@ class Slider extends Component {
     }
 
     handleMouseDown(e) {
-        this.moveFlag = true;
-        this.nowWidth = this.refs.wrapper.clientWidth;
-        this.nowX = e.clientX;
-        console.log('开始')
+        let event = e || window.event;
+        this.flag = true;
+        this.currentWidth = this.refs.wrapper.clientWidth;
+        this.currentX = event.clientX;
+        this.lastProgress = this.state.progress || 0;
+        this.setState({showPercent: true })
     }
 
     handleMouseMove(e) {
-        let _progress = 1/this.nowWidth * (e.clientX-this.nowX)+this.state.progress;
-        if (this.moveFlag && _progress>=0 && _progress<= 100) {
+        let event = e || window.event;
+        let _progress = event.clientX - this.currentX + this.lastProgress;
+        let _percent = _progress/this.currentWidth*100 | 0;
+        if (this.flag && _progress>=0 && _progress<= this.currentWidth) {
             console.log(_progress);
-            this.setState({progress: _progress})
+            this.setState({progress: _progress, percent: _percent})
         }
     }
 
     handleMouseUp(e) {
-        this.moveFlag = false;
-        console.log('结束')
+        if (this.flag) {this.callback && this.callback()}
+        this.flag = false;
+        this.setState({showPercent: false })
     }
 
     render() {
         return (
             <div ref="wrapper"
                 style={this.state.wrapStyle}
-                onClick={(e)=>this.handleClick(e)}
                 onMouseUp={(e)=>this.handleMouseUp(e)}
-                onMouseMove={(e)=>this.handleMouseMove(e)}
-                onMouseDown={(e)=>this.handleMouseDown(e)}
                 className={"ry-slider " +
                     (this.state.wrapClass?this.state.wrapClass:'')}>
                 <div className="ry-slider-handle"
-                    style={{left: this.state.progress+'%'}}></div>
+                    onMouseDown={(e)=>this.handleMouseDown(e)}
+                    style={{left: this.state.progress}}>
+                    <span className={this.state.showPercent ? "ry-slider-percent ry-active" : "ry-slider-percent" }>{this.state.percent}</span>
+                </div>
                 <div className="ry-slider-track"
-                    style={{width: this.state.progress+'%'}}></div>
+                    style={{width: this.state.progress}}></div>
                 <div className="ry-slider-step"></div>
             </div>
         )
+    }
+
+    componentDidMount() {
+        document.addEventListener('mouseup', ()=> {
+            if (this.flag) {this.callback && this.callback()}
+            this.flag = false;
+            this.setState({showPercent: false })
+        })
+        document.addEventListener('mousemove', (e)=> {
+            this.handleMouseMove(e)
+        })
     }
 }
 

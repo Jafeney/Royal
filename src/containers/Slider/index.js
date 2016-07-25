@@ -14,6 +14,10 @@ class DemoSlider extends Component {
         super(props)
     }
 
+    handleSlider() {
+        alert('slider值已被修改！')
+    }
+
     render() {
         return (
             <div className='wrapper'>
@@ -22,7 +26,7 @@ class DemoSlider extends Component {
                     <h3>组件演示</h3>
                     <div>
                         <Row>
-                            <Col><Slider /></Col>
+                            <Col><Slider callback={()=>this.handleSlider()} /></Col>
                             <Col></Col>
                         </Row>
                     </div>
