@@ -75,7 +75,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Slider",
-                        complete: false,
+                        complete: true,
                     },
                     {
                         name: "Switch",
@@ -134,6 +134,10 @@ class Demo extends Component {
                     {
                         name: "BackTop",
                         complete: false,
+                    },
+                    {
+                        name: 'Drag',
+                        complete: true,
                     },
                     {
                         name: "LocaleProvider",

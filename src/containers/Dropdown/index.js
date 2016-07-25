@@ -50,6 +50,26 @@ class DemoDropdown extends Component {
                                 <strong>style</strong>
                                 <span>组件内敛样式</span>
                             </li>
+                            <li>
+                                <strong>className</strong>
+                                <span>组件样式类</span>
+                            </li>
+                            <li>
+                                <strong>title</strong>
+                                <span>标题</span>
+                            </li>
+                            <li>
+                                <strong>dataList</strong>
+                                <span>下拉内容列表</span>
+                            </li>
+                            <li>
+                                <strong>renderItem</strong>
+                                <span>列表单项渲染模板</span>
+                            </li>
+                            <li>
+                                <strong>dropped</strong>
+                                <span>初试下拉状态, true表示下拉， false表示关闭下拉</span>
+                            </li>
                         </ul>
                     </div>
                 </div>

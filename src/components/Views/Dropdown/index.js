@@ -15,6 +15,8 @@ class Dropdown extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            style: props.style || null,
+            className: props.className || null,
             title: props.title || null,
             dataList: props.dataList || null,
             dropped: props.dropped || false,
@@ -38,7 +40,8 @@ class Dropdown extends Component {
 
     render() {
         return (
-            <div className="ry-dropdown">
+            <div style={this.state.style}
+                className={"ry-dropdown " + (this.state.className ? this.state.className : '')} >
                 <div className="show-box" onClick={ () => this.onToggle() }>
                     <span className="title">{ this.state.title }</span>
                     <Icon ref="icon"  name={this.icon} />

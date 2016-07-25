@@ -28,6 +28,13 @@ let fs = require('fs'),
             DESC: '置顶'
         },
         {
+            NAME : 'Drag',
+            TYPE : 'Other',
+            AUTHOR : 'Jafeney',
+            DATETIME : '2016-07-07',
+            DESC: '可拖拽容器'
+        },
+        {
             NAME : 'LocaleProvider',
             TYPE : 'Other',
             AUTHOR : 'Jafeney',

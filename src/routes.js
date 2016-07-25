@@ -28,6 +28,7 @@ import Carousel from './containers/Carousel/'
 import Cascader from './containers/Cascader/'
 import Collapse from './containers/Collapse/'
 import DatePicker from './containers/DatePicker/'
+import Drag from './containers/Drag/'
 import Dropdown from './containers/Dropdown/'
 import Form from './containers/Form/'
 import Input from './containers/Input/'
@@ -81,6 +82,7 @@ const routes = (
             <Route path="cascader" component={Cascader} />
             <Route path="collapse" component={Collapse} />
             <Route path="datePicker" component={DatePicker} />
+            <Route path="drag" component={Drag} />
             <Route path="dropdown" component={Dropdown} />
             <Route path="form" component={Form} />
             <Route path="input" component={Input} />
