@@ -25,14 +25,14 @@ class DemoTabs extends Component {
                         <Row>
                             <Col>
                                 <Tabs>
-                                    <Tabs.Pane onClick={()=>console.log('切换到tab1')} title="tab1" icon="circle-blank" selected={false}>
+                                    <Tabs.Pane onClick={()=>console.log('切换到tab1')} title="tab1" icon="circle-blank" selected={true}>
                                         <QueueAnimation speed={'zing'} name="fadeInLeft" style={{width: '100%'}}>
                                             <p style={{width: 800, textAlign: 'center'}}>
                                                 <img src="http://www.ah.xinhuanet.com/2016-04/14/1118619097_14606009478061n.jpg" />
                                             </p>
                                         </QueueAnimation>
                                     </Tabs.Pane>
-                                    <Tabs.Pane onClick={()=>console.log('切换到tab2')} title="tab2" icon="circle-blank" selected={true}>
+                                    <Tabs.Pane onClick={()=>console.log('切换到tab2')} title="tab2" icon="circle-blank" selected={false}>
                                         <QueueAnimation speed={'zing'}  name="fadeInLeft" style={{width: '100%'}}>
                                             <p style={{width: 800, textAlign: 'center'}}>
                                                 <img src="http://pic.6188.com/upload_6188s/flashAll/s800/20130409/1365470953NgSSbf.jpg" />

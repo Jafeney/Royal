@@ -9,5 +9,10 @@
         <div id="root"></div>
         <script src="/build/vendor.js"></script>
         <script src="/build/bundle.js"></script>
+        <script>
+            if (!location.hash.split('?')[0].split('/')[1]) {
+                location.href = "index.html#/tabs"
+            }
+        </script>
     </body>
 </html>

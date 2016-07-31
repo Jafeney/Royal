@@ -44,4 +44,4 @@
     $ node app.js
 ```
 
-默认监听 `3000` 端口，赶紧 打开浏览器 看看吧！
+默认监听 `3000` 端口，输入URL  http://localhost:3000/index.html 看看吧！ 

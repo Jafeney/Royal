@@ -18,14 +18,14 @@ http.createServer((req, res) => {
     let ext = path.extname(realPath);
 
     ext = ext ? ext.slice(1) : 'unknown';
-
+    
     fs.exists(realPath, (exists) => {
         if (!exists) {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.write("This request URL " + pathName + " is not found on this server.");
             res.end()
         } else {
-            fs.readFile(realPath, "binary", (err, file) => { 
+            fs.readFile(realPath, "binary", (err, file) => {
                 if (err) {
                     res.writeHead(500, { 'Content-Type': 'text/plain' });
                     res.end()
