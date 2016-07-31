@@ -47,7 +47,7 @@ class Dropdown extends Component {
                     <Icon ref="icon"  name={this.icon} />
                 </div>
                 <ul className={ this.state.dropped ? "drop-list ry-active" : "drop-list" }>
-                    <QueueAnimation speed="zing" name="dropDown">
+                    <QueueAnimation  speed="zing" name="fadeInDown">
                     { this._renderItem() }
                     </QueueAnimation>
                 </ul>
