@@ -23,7 +23,7 @@ class DemoUpload extends Component {
                     <div>
                         <Row>
                             <Col>
-                                <Upload uri={'http://royal-react.com:9999/upload'} />
+                                <Upload uri={'http://royal-react.com:9999/upload'} multiple={true} />
                             </Col>
                         </Row>
                     </div>
