@@ -91,7 +91,7 @@ class Demo extends Component {
                     },
                     {
                         name: "Upload",
-                        complete: false,
+                        complete: true,
                     },
                 ]
             },

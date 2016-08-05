@@ -4,8 +4,8 @@
  * @dateTime 2016-07-07
  **/
 
-import React, { Component } from 'react' 
-import { Row, Col } from '../../components/Basic/Layout/' 
+import React, { Component } from 'react'
+import { Row, Col } from '../../components/Basic/Layout/'
 import Upload from '../../components/FormControls/Upload/'
 
 class DemoUpload extends Component {
@@ -22,7 +22,9 @@ class DemoUpload extends Component {
                     <h3>组件演示</h3>
                     <div>
                         <Row>
-                            <Col>演示的内容</Col>
+                            <Col>
+                                <Upload uri={'http://royal-react.com:9999/upload'} />
+                            </Col>
                         </Row>
                     </div>
                     <hr />
