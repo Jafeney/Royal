@@ -26,13 +26,20 @@ class Upload extends Component {
         }
     }
 
-    handleChange(event) {
-        event.preventDefault()
-        let target = event.target
-        let files = target.files
+    // 取消拖拽时鼠标经过样式
+    handleDragHover(e) {
+        e.stopPropagation();
+		e.preventDefault();
+    }
+
+    //文件拖放处理
+    handleDrag(e) {
+        this.handleDragHover(e);
+
+        // 获取文件列表对象
+		let files = e.target.files || e.dataTransfer.files;
         let count = this.state.multiple ? files.length : 1
-        let i
-        for (i = 0; i < count; i++) {
+        for (let i = 0; i < count; i++) {
             files[i].thumb = URL.createObjectURL(files[i])
         }
         // convert to array
@@ -40,7 +47,22 @@ class Upload extends Component {
         files = files.filter(function (file) {
             return /image/i.test(file.type)
         })
-        console.log(files)
+        this.setState({files: this.state.files.concat(files)})
+    }
+
+    handleChange(event) {
+        event.preventDefault()
+        let target = event.target
+        let files = target.files
+        let count = this.state.multiple ? files.length : 1
+        for (let i = 0; i < count; i++) {
+            files[i].thumb = URL.createObjectURL(files[i])
+        }
+        // convert to array
+        files = Array.prototype.slice.call(files, 0)
+        files = files.filter(function (file) {
+            return /image/i.test(file.type)
+        })
         this.setState({files: this.state.files.concat(files)})
     }
 
@@ -57,7 +79,6 @@ class Upload extends Component {
                 // this.onDelete(fileDelete);
             }
         }
-        console.log(arrFile)
         this.setState({files: arrFile})
     }
 
@@ -129,11 +150,17 @@ class Upload extends Component {
                     <div className="upload-append-list">
                         <p>
                             <strong>{item.name}</strong>
-                            <a href="javascript:void(0)" className="upload-delete" title="删除" index={idx}></a>
+                            <a href="javascript:void(0)"
+                                className="upload-delete"
+                                title="删除" index={idx}></a>
                             <br/>
                             <img src={item.thumb} className="upload-image" />
                         </p>
-                        <span className={this.state.progress[idx]?"upload-progress":"upload-progress ry-hidden"}>{this.state.progress[idx]}</span>
+                        <span className={this.state.progress[idx]?
+                            "upload-progress":
+                            "upload-progress ry-hidden"}>
+                            {this.state.progress[idx]}
+                        </span>
                     </div>
                 )
             })
@@ -171,19 +198,31 @@ class Upload extends Component {
                                 name="fileSelect"
                                 accept="image/*"
                                 multiple />
-                            <span className="upload-drag-area">或者将图片拖到此处</span>
+                            <span ref="dragBox" className="upload-drag-area">
+                                或者将图片拖到此处
+                            </span>
                         </div>
-                        <div className={this.state.files.length?"upload-preview":"upload-preview ry-hidden"}>
+                        <div className={this.state.files.length?
+                                "upload-preview":"upload-preview ry-hidden"}>
                             {this._renderPreview()}
                         </div>
                     </div>
-                    <div className={this.state.files.length?"upload-submit":"upload-submit ry-hidden"}>
-                        <button type="button" onClick={()=>this.handleUpload()} class="upload-submit-btn">确认上传图片</button>
+                    <div className={this.state.files.length?
+                            "upload-submit":"upload-submit ry-hidden"}>
+                        <button type="button"
+                            onClick={()=>this.handleUpload()}
+                            class="upload-submit-btn">确认上传图片</button>
                     </div>
                     <div className="upload-info">{this._renderUploadInfos()}</div>
                 </div>
             </form>
         )
+    }
+
+    componentDidMount() {
+        this.refs.dragBox.addEventListener("dragover", (e) => this.handleDragHover(e), false);
+        this.refs.dragBox.addEventListener("dragleave", (e) => this.handleDragHover(e), false);
+		this.refs.dragBox.addEventListener("drop", (e) => this.handleDrag(e), false);
     }
 }
 
