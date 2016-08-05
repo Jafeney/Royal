@@ -12,17 +12,13 @@ class Upload extends Component {
 
     constructor(props) {
         super(props)
-        let _progress=[];
-        for(let i = 0; i < props.size; i++) {
-            _progress.push(null)
-        }
         this.state = {
             uploadHistory: [],
             uri: props.uri || '/',
             size: props.size || 20,
             files: props.files || [],
-            multiple: props.multiple || true,
-            progress: _progress || [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], //默认一次最多上传20张
+            multiple: props.multiple || false,
+            progress: [], //默认一次最多上传20张
         }
     }
 
@@ -33,9 +29,9 @@ class Upload extends Component {
     }
 
     //文件拖放处理
-    handleDrag(e) {
+    handleDrop(e) {
+        this.setState({progress:[]})
         this.handleDragHover(e);
-
         // 获取文件列表对象
 		let files = e.target.files || e.dataTransfer.files;
         let count = this.state.multiple ? files.length : 1
@@ -51,6 +47,7 @@ class Upload extends Component {
     }
 
     handleChange(event) {
+        this.setState({progress:[]})
         event.preventDefault()
         let target = event.target
         let files = target.files
@@ -100,7 +97,7 @@ class Upload extends Component {
 
     handleUpload() {
         for (let i = 0, file; file = this.state.files[i]; i++) {
-            if (file) {
+            ((file) => {
                 let xhr = new XMLHttpRequest();
                 if (xhr.upload) {
                     // 上传中
@@ -137,9 +134,10 @@ class Upload extends Component {
                     // xhr.send(file);
                     var form = new FormData();
                     form.append("filedata", file);
+                    console.log(form);
                     xhr.send(form);
                 }
-            }
+            })(file)
         }
     }
 
@@ -197,8 +195,12 @@ class Upload extends Component {
                                 size={this.state.size}
                                 name="fileSelect"
                                 accept="image/*"
-                                multiple />
-                            <span ref="dragBox" className="upload-drag-area">
+                                multiple={this.state.multiple} />
+                            <span ref="dragBox"
+                                onDragOver={(e)=>this.handleDragHover(e)}
+                                onDragLeave={(e)=>this.handleDragHover(e)}
+                                onDrop={(e)=>this.handleDrop(e)}
+                                className="upload-drag-area">
                                 或者将图片拖到此处
                             </span>
                         </div>
@@ -217,12 +219,6 @@ class Upload extends Component {
                 </div>
             </form>
         )
-    }
-
-    componentDidMount() {
-        this.refs.dragBox.addEventListener("dragover", (e) => this.handleDragHover(e), false);
-        this.refs.dragBox.addEventListener("dragleave", (e) => this.handleDragHover(e), false);
-		this.refs.dragBox.addEventListener("drop", (e) => this.handleDrag(e), false);
     }
 }
 
