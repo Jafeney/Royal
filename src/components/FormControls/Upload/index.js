@@ -16,9 +16,12 @@ class Upload extends Component {
             uploadHistory: [],
             uri: props.uri || '/',
             size: props.size || 20,
-            files: props.files || [],
             multiple: props.multiple || false,
+            files: [],
             progress: [], //默认一次最多上传20张
+            success: props.success || null,  // 单张图片上传完成触发的回调
+            fail: props.fail || null,        // 单张图片上传失败出发的回调
+            complete: props.complete || null,  // 上传全部完成出发的回调
         }
     }
 
@@ -64,6 +67,7 @@ class Upload extends Component {
     }
 
     handleSuccess(file, res) {
+        this.state.success && this.state.success();
         this.setState({uploadHistory: [...this.state.uploadHistory, JSON.parse(res)]})
     }
 
@@ -71,7 +75,7 @@ class Upload extends Component {
         let arrFile = [];
         for (let i = 0, file; file = this.state.files[i]; i++) {
             if (file != fileDelete) {
-                arrFile.push(file);
+                arrFile.push(file)
             } else {
                 // this.onDelete(fileDelete);
             }
@@ -88,57 +92,55 @@ class Upload extends Component {
     }
 
     handleComplete() {
-        console.log('upload complete！');
+        this.state.complete && this.state.complete()
+        console.log('upload complete！')
     }
 
     handleFailure(file, res) {
-        console.log(res);
+        this.state.fail && this.state.fail(res)
+        // console.log(res)
+    }
+
+    _upload(file, idx) {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest()
+            if (xhr.upload) {
+                // 上传中
+                xhr.upload.addEventListener('progress', (e) => {
+                    // 处理上传进度
+                    this.handleProgress(file, e.loaded, e.total, idx)
+                }, false)
+                // 上传成功或者失败
+                xhr.onreadystatechange = (e) => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            // 上传成功操作
+                            this.handleSuccess(file, xhr.responseText)
+                            // 把该文件从上传队列中删除
+                            this.handleDeleteFile(file)
+                            resolve(xhr.responseText)
+                        }
+                    } else {
+                        // 上传出错处理
+                        this.handleFailure(file, xhr.responseText)
+                        reject(xhr.responseText)
+                    }
+                }
+            }
+            // 开始上传
+            xhr.open("POST", this.state.uri, true)
+            let form = new FormData()
+            form.append("filedata", file)
+            xhr.send(form)
+        })
     }
 
     handleUpload() {
-        for (let i = 0, file; file = this.state.files[i]; i++) {
-            ((file) => {
-                let xhr = new XMLHttpRequest();
-                if (xhr.upload) {
-                    // 上传中
-                    console.log('上传中')
-                    xhr.upload.addEventListener("progress", (e) => {
-                        this.handleProgress(file, e.loaded, e.total, i);
-                    }, false);
-
-                    // 文件上传成功或是失败
-                    xhr.onreadystatechange = (e) => {
-                        if (xhr.readyState == 4) {
-                            if (xhr.status == 200) {
-                                this.handleSuccess(file, xhr.responseText);
-                                console.log('一个任务上传成功！')
-
-                                this.handleDeleteFile(file);
-                                console.log('该文件已从上传队列中删除');
-
-                                if (!this.state.files.length) {
-                                    //全部完毕
-                                    this.handleComplete();
-                                    console.log('全部上传完成！');
-                                }
-                            } else {
-                                this.handleFailure(file, xhr.responseText);
-                                console.log('上传出错！');
-                            }
-                        }
-                    }
-
-                    // 开始上传
-                    xhr.open("POST", this.state.uri, true);
-                    xhr.setRequestHeader("X_FILENAME", file.name);
-                    // xhr.send(file);
-                    var form = new FormData();
-                    form.append("filedata", file);
-                    console.log(form);
-                    xhr.send(form);
-                }
-            })(file)
-        }
+        let _promises = this.state.files.map((file, idx) => this._upload(file, idx))
+        Promise.all(_promises).then((res) => {
+            // 全部上传完成
+            this.handleComplete()
+        }).catch((err) => { console.log(err) })
     }
 
     _renderPreview() {

@@ -23,7 +23,7 @@ class DemoUpload extends Component {
                     <div>
                         <Row>
                             <Col>
-                                <Upload uri={'http://jafeney.com:9999/upload'} multiple={true} />
+                                <Upload uri={'http://royal-react.com:9999/upload'} multiple={true} />
                             </Col>
                         </Row>
                     </div>
@@ -32,8 +32,28 @@ class DemoUpload extends Component {
                     <div>
                         <ul className='api-list'>
                             <li>
-                                <strong>style</strong>
-                                <span>组件内敛样式</span>
+                                <strong>uri</strong>
+                                <span>图片上传的后端处理接口</span>
+                            </li>
+                            <li>
+                                <strong>multiple</strong>
+                                <span>是否开启多图上传, 默认为 false（不开启）</span>
+                            </li>
+                            <li>
+                                <strong>size</strong>
+                                <span>一次最大上传数量，默认为 20 </span>
+                            </li>
+                            <li>
+                                <strong>success</strong>
+                                <span>单张图片上传完成触发的回调</span>
+                            </li>
+                            <li>
+                                <strong>fail</strong>
+                                <span>单张图片上传失败触发的回调</span>
+                            </li>
+                            <li>
+                                <strong>complete</strong>
+                                <span>上传全部完成触发的回调</span>
                             </li>
                         </ul>
                     </div>

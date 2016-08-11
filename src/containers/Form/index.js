@@ -4,9 +4,11 @@
  * @dateTime 2016-07-07
  **/
 
-import React, { Component } from 'react' 
-import { Row, Col } from '../../components/Basic/Layout/' 
+import React, { Component } from 'react'
+import { Row, Col } from '../../components/Basic/Layout/'
 import Form from '../../components/FormControls/Form/'
+
+import Test from '../../components/test'
 
 class DemoForm extends Component {
 
@@ -22,7 +24,7 @@ class DemoForm extends Component {
                     <h3>组件演示</h3>
                     <div>
                         <Row>
-                            <Col>演示的内容</Col>
+                            <Col><Test /></Col>
                         </Row>
                     </div>
                     <hr />
