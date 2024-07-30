@@ -13,6 +13,11 @@ let http = require('http'),
 const PORT = 3000;
 
 http.createServer((req, res) => {
+    if (path.normalize(decodeURI(pathName)) !== decodeURI(pathName)) {
+        res.statusCode = 403;
+        res.end();
+        return;
+    }
     let pathName = url.parse(req.url).pathname;
     let realPath = path.join(".", pathName);
     let ext = path.extname(realPath);
